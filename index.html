@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omvandla tid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Omvandla decimal till timmar och minuter</h1>
+    <input type="number" id="decimalTime" placeholder="Ange tid i decimal" step="0.01">
+    <button onclick="convertTime()">Omvandla</button>
+    <div id="result"></div>
+
+    <script>
+        function convertTime() {
+            // Hämta värdet från input
+            const decimalTime = parseFloat(document.getElementById('decimalTime').value);
+
+            if (isNaN(decimalTime) || decimalTime < 0) {
+                document.getElementById('result').textContent = "Vänligen ange en giltig tid i decimal!";
+                return;
+            }
+
+            // Räkna ut timmar och minuter
+            const hours = Math.floor(decimalTime);
+            const minutes = Math.round((decimalTime - hours) * 60);
+
+            // Visa resultatet
+            document.getElementById('result').textContent = 
+                `${hours} timmar och ${minutes} minuter`;
+        }
+    </script>
+</body>
+</html>
